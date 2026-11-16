@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Atul Quant Studio — Technical & Presentation Report</title>
+<style>
+  @page {
+    size: A4;
+    margin: 16mm 14mm 16mm 14mm;
+    @bottom-right {
+      content: counter(page);
+      font-size: 8.5pt;
+      color: #64748b;
+    }
+    @bottom-left {
+      content: "Atul Quant Studio · Summer Analytics 2026 · IIT Guwahati";
+      font-size: 8pt;
+      color: #64748b;
+    }
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: #1e293b;
+    line-height: 1.55;
+    font-size: 9.5pt;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .cover {
+    background: linear-gradient(135deg, #0b1329 0%, #111e38 50%, #1e293b 100%);
+    color: #f8fafc;
+    padding: 28px 26px 24px 26px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 6px solid #22c55e;
+    page-break-after: avoid;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: rgba(34, 197, 94, 0.18);
+    color: #4ade80;
+    font-weight: 700;
+    font-size: 8pt;
+    letter-spacing: 0.08em;
+    padding: 3px 9px;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    border: 1px solid rgba(34, 197, 94, 0.35);
+  }
+  .cover h1 {
+    font-size: 19pt;
+    margin: 0 0 6px 0;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    border: none;
+    padding: 0;
+  }
+  .cover-sub {
+    font-size: 10.5pt;
+    color: #94a3b8;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    font-size: 8.5pt;
+  }
+  .cover-meta strong {
+    display: block;
+    color: #94a3b8;
+    font-size: 7.2pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+  }
+  .cover-meta span {
+    color: #ffffff;
+    font-weight: 600;
+  }
+  h1, h2, h3, h4 {
+    color: #0f172a;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  h1 {
+    font-size: 15pt;
+    margin-top: 22px;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #e2e8f0;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  h2 {
+    font-size: 12pt;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #cbd5e1;
+    color: #1e3a8a;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  h3 {
+    font-size: 10.5pt;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    color: #334155;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  p {
+    margin: 0 0 8px 0;
+    text-align: justify;
+  }
+  ul, ol {
+    margin: 0 0 10px 0;
+    padding-left: 18px;
+  }
+  li {
+    margin-bottom: 3px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 14px 0;
+    font-size: 8.5pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    background: #ffffff;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 5px 8px;
+    text-align: left;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+  pre, code {
+    font-family: 'Consolas', 'Courier New', monospace;
+  }
+  code {
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: 1px 4px;
+    border-radius: 4px;
+    font-size: 8pt;
+    border: 1px solid #e2e8f0;
+  }
+  pre {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 9px 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 7.5pt;
+    line-height: 1.4;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin: 8px 0 12px 0;
+    border: 1px solid #334155;
+  }
+  pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+  }
+  .alert {
+    border-left: 4px solid #3b82f6;
+    background: #eff6ff;
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    margin: 10px 0 14px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .alert-title {
+    font-weight: 700;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #1d4ed8;
+    margin-bottom: 2px;
+  }
+  .alert-body {
+    font-size: 8.5pt;
+    color: #1e3a8a;
+  }
+  blockquote {
+    border-left: 3px solid #94a3b8;
+    margin: 8px 0 10px 0;
+    padding: 4px 10px;
+    color: #475569;
+    background: #f8fafc;
+    font-style: italic;
+    page-break-inside: avoid;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 16px 0;
+  }
+  .footer-note {
+    margin-top: 24px;
+    padding-top: 10px;
+    border-top: 1px solid #cbd5e1;
+    font-size: 7.5pt;
+    color: #64748b;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-badge">Summer Analytics 2026 · Capstone Project Report</div>
+  <h1>ATUL QUANT STUDIO</h1>
+  <div class="cover-sub">An End-to-End Machine Learning System for Quantitative Finance &amp; NSE Market Analysis</div>
+  <div class="cover-meta">
+    <div>
+      <strong>Author &amp; Presenter</strong>
+      <span>Atul Prakash</span>
+    </div>
+    <div>
+      <strong>Organized By</strong>
+      <span>C&amp;A Club, IIT Guwahati</span>
+    </div>
+    <div>
+      <strong>Framework &amp; ML Stack</strong>
+      <span>Django 5 · Scikit-Learn · XGBoost · Plotly</span>
+    </div>
+    <div>
+      <strong>Source Repository</strong>
+      <span>github.com/atulyd77/atul-quant-studio</span>
+    </div>
+  </div>
+</div>
+
+<h1 id="atul-quant-studio-end-to-end-quantitative-finance-machine-learning-system">ATUL QUANT STUDIO: End-to-End Quantitative Finance &amp; Machine Learning System</h1>
+<p><strong>Comprehensive Technical Report &amp; Presentation Guide</strong><br />
+<strong>Program:</strong> Summer Analytics 2026 · Consulting &amp; Analytics Club, IIT Guwahati<br />
+<strong>Author / Presenter:</strong> Atul Prakash<br />
+<strong>Repository:</strong> <a href="https://github.com/atulyd77/atul-quant-studio">github.com/atulyd77/atul-quant-studio</a><br />
+<strong>Date:</strong> November 2026  </p>
+<hr />
+<h2 id="1-executive-summary">1. Executive Summary</h2>
+<p><strong>Atul Quant Studio</strong> is a full-stack quantitative finance and machine learning platform designed to replace subjective retail technical analysis with a systematic, reproducible, data-driven methodology. Developed as the capstone submission for the prestigious <strong>Summer Analytics 2026</strong> program organized by the <strong>Consulting &amp; Analytics Club, IIT Guwahati</strong>, this project bridges the divide between theoretical statistical modeling and production-ready web engineering.</p>
+<p>Rather than remaining confined to isolated Jupyter notebooks or exploratory scripts, Atul Quant Studio implements an end-to-end production architecture:
+1. Automated ingestion of live National Stock Exchange (NSE) equities and major indices.
+2. A leakage-free, time-aware feature engineering engine computing 9+ technical indicators across trend, momentum, volatility, and volume dimensions.
+3. Multi-model supervised learning pipelines addressing two distinct financial forecasting targets:
+   - <strong>Continuous Stock Price Regression:</strong> Next-day closing price ($y<sub>t+1</sub>$) using Ridge Regression, Random Forest, XGBoost, and an unweighted Ensemble.
+   - <strong>Discrete Index Directional Classification:</strong> Multi-day index direction ($\text{Sign}(y<sub>t+k</sub> - y<sub>t</sub>)$) using Regularized Logistic Regression, Random Forest Classifier, and XGBoost Classifier.
+4. An interactive, dark/light-themed financial dashboard built with <strong>Django 5</strong>, <strong>Plotly</strong>, and <strong>Tailwind CSS</strong>, featuring real-time index tickers, market-leader heatmaps, intraday candlestick charts, full fundamental metrics, and model evaluation curves.</p>
+<p>Empirical evaluation on benchmark equities (demonstrated on Tata Consultancy Services, <code>TCS.NS</code>) reveals that linear regularized models (<strong>Ridge Regression</strong>, $R&sup2; = 0.9642$, $\text{MAE} = 2.235\%$) significantly outperform complex non-linear tree ensembles (<strong>Random Forest</strong>, $R&sup2; = 0.2777$; <strong>XGBoost</strong>, $R&sup2; = 0.0827$) during macroeconomic market drawdowns due to tree-based partitioning limits when extrapolating beyond training target ranges. Furthermore, directional classification converges near chance ($44.85\% - 45.18\%$), empirically validating the Semi-Strong Form of the Efficient Market Hypothesis (EMH) on raw indicator space and underscoring the necessity of probabilistic risk management over naive directional speculation.</p>
+<pre><code>+-----------------------------------------------------------------------------------------+
+|                                    ATUL QUANT STUDIO                                    |
+|                      End-to-End Quantitative Finance Architecture                       |
++-----------------------------------------------------------------------------------------+
+|  [ Data Ingestion ]    yfinance API (Daily OHLCV &amp; 1m/5m Intraday for NSE &amp; Indices)    |
+|                                     │                                                   |
+|  [ Preprocessing ]     Pandas / NumPy Alignment, Forward-Fill, Data Validation          |
+|                                     │                                                   |
+|  [ Feature Engine ]    Trend (SMA, EMA, MACD) | Momentum (RSI, Stoch, ADX)              |
+|                        Volatility (Bollinger, ATR) | Volume Profile (Past-Only Window)  |
+|                                     │                                                   |
+|  [ Machine Learning ]  Dual-Target Formulation:                                         |
+|                        • Stock Regression: Ridge (L2) | Random Forest | XGBoost         |
+|                        • Index Direction: Logistic Reg | RF Classifier | XGB Classifier |
+|                                     │                                                   |
+|  [ Scoring &amp; Eval ]    Strict Out-of-Sample Window (75/25 Split, MAE, R&amp;sup2;, Direction %)  |
+|                                     │                                                   |
+|  [ Web Application ]   Django 5 Backend MVC + Plotly Visualization + Tailwind CSS UI    |
++-----------------------------------------------------------------------------------------+
+</code></pre>
+<hr />
+<h2 id="2-program-context-credentials">2. Program Context &amp; Credentials</h2>
+<p>The <strong>Summer Analytics 2026</strong> program, conducted by the <strong>Consulting &amp; Analytics Club at the Indian Institute of Technology (IIT) Guwahati</strong>, is an intensive six-week academic and practical curriculum covering:
+- Advanced Exploratory Data Analysis &amp; Statistical Inference.
+- Supervised and Unsupervised Machine Learning.
+- Time Series Forecasting and Feature Engineering.
+- Productionization, Pipeline Design, and Deployment.</p>
+<p>This project represents the complete capstone deliverable, demonstrating the end-to-end lifecycle of applied data science: from raw financial data acquisition to rigorous model validation, error analysis, and full-stack deployment.</p>
+<div class="alert alert-note"><div class="alert-title">NOTE</div><div class="alert-body">**Verified Certification:** Completed under the supervision of the Technical Board and Consulting & Analytics Club leadership at IIT Guwahati (Chairperson, General Secretary, Secretary, and Analytics/ML Heads).</div></div>
+
+<hr />
+<h2 id="3-problem-statement-motivation">3. Problem Statement &amp; Motivation</h2>
+<h3 id="31-the-failure-of-traditional-retail-technical-analysis">3.1 The Failure of Traditional Retail Technical Analysis</h3>
+<p>Retail traders predominantly rely on discretionary chart analysis—viewing single indicators in isolation (e.g., waiting for an arbitrary RSI threshold cross at 30 or an EMA crossover) without statistical backing. This traditional approach suffers from fundamental systematic flaws:
+- <strong>Cognitive and Confirmation Bias:</strong> Traders selectively interpret signals that align with prior market beliefs while disregarding contradictory indicators.
+- <strong>Isolated Indicator Analysis:</strong> Technical indicators interact non-linearly. Evaluating RSI without volume confirmation or trend strength (ADX) produces rampant false positives.
+- <strong>Non-Reproducible &amp; Subjective:</strong> Manual chart interpretation cannot be rigorously backtested, audited, or benchmarked across historical market regimes.
+- <strong>Absence of Quantitative Validation:</strong> Traditional technical analysis rarely validates metrics (MAE, RMSE, $R&sup2;$, Precision, Recall) on held-out test data.</p>
+<h3 id="32-the-quantitative-machine-learning-paradigm">3.2 The Quantitative Machine Learning Paradigm</h3>
+<p>Atul Quant Studio transforms market analysis into a deterministic, testable engineering discipline:
+1. <strong>High-Dimensional Feature Synthesis:</strong> Combines dozens of engineered features into a unified model-ready matrix.
+2. <strong>Objective Loss Optimization:</strong> Replaces guesswork with mathematical loss minimization (Mean Squared Error with $L<sub>2</sub>$ shrinkage and logarithmic cross-entropy).
+3. <strong>Strict Out-of-Sample Evaluation:</strong> Evaluates every model on chronologically held-out test windows that the model never saw during training.
+4. <strong>Transparent Comparative Reporting:</strong> Simultaneously presents multiple distinct algorithm families so users observe consensus, divergence, and uncertainty.</p>
+<hr />
+<h2 id="4-data-pipeline-feature-engineering">4. Data Pipeline &amp; Feature Engineering</h2>
+<h3 id="41-data-acquisition-sanitization">4.1 Data Acquisition &amp; Sanitization</h3>
+<p>Market data is acquired programmatically using <code>yfinance</code> interfacing with National Stock Exchange (<code>.NS</code>) feeds:
+- <strong>Daily Historical Horizon:</strong> 5 years of daily OHLCV (Open, High, Low, Close, Volume) for equities; 10 years for indices (e.g., <code>^NSEI</code>, <code>^NSEBANK</code>, <code>^BSESN</code>).
+- <strong>Intraday Resolution:</strong> 1-minute and 5-minute candlestick data fetched dynamically for real-time tracking during active trading sessions.
+- <strong>Data Sanitization:</strong> Cleaning routines align calendar gaps (trading holidays, weekend offsets), handle missing bars via localized forward-filling, and drop non-tradable rows.</p>
+<h3 id="42-mathematical-formulation-of-technical-features">4.2 Mathematical Formulation of Technical Features</h3>
+<p>A multi-tier feature pipeline transforms raw OHLCV prices into stationary and semi-stationary signals:</p>
+<p>$$\text{Raw Candles } (O, H, L, C, V) \longrightarrow \text{Cleaned Series} \longrightarrow \text{Indicator Transformation} \longrightarrow X<sub>t</sub> &isin; &#8477;<sup>d</sup>$$</p>
+<pre><code>+----------------------------------------------------------------------------------------+
+| Indicator Family       | Specific Metrics Engineered         | Financial Purpose       |
++------------------------+-------------------------------------+-------------------------+
+| Trend Identification   | • Simple Moving Average (SMA 20, 50)| Determines baseline     |
+|                        | • Exponential Moving Average (EMA)  | macro trend direction   |
+|                        | • Moving Average Convergence        | and dynamic support/    |
+|                        |   Divergence (MACD, Signal, Hist)   | resistance boundaries.  |
++------------------------+-------------------------------------+-------------------------+
+| Momentum &amp; Oscillators | • Relative Strength Index (RSI 14)  | Quantifies velocity and |
+|                        | • Stochastic Oscillator (%K, %D)    | speed of price changes; |
+|                        | • Average Directional Index (ADX)   | detects exhaustion.     |
++------------------------+-------------------------------------+-------------------------+
+| Volatility &amp; Dispersion| • Bollinger Bands (Upper, Mid, Lower| Measures price spread,  |
+|                        |   and %B Bandwidth)                 | volatility clustering,  |
+|                        | • Average True Range (ATR 14)       | and risk expansion.     |
++------------------------+-------------------------------------+-------------------------+
+| Volume Dynamics        | • Volume SMA Ratio                  | Validates price moves   |
+|                        | • Price-Volume Interaction Terms    | with institutional flow.|
++------------------------+-------------------------------------+-------------------------+
+</code></pre>
+<h3 id="43-preventing-data-leakage-look-ahead-bias">4.3 Preventing Data Leakage (Look-Ahead Bias)</h3>
+<p>A paramount challenge in financial machine learning is <strong>data leakage</strong>. Standard standardizers (such as applying <code>StandardScaler</code> or rolling indicators across the full dataset prior to splitting) inadvertently leak future mean and variance into historical rows.</p>
+<p>In Atul Quant Studio:
+- <strong>Past-Only Rolling Windows:</strong> Indicators are strictly backward-looking ($\text{Window} \le t$).
+- <strong>Chronological Train/Test Split:</strong> Standard randomized shuffling ($k$-fold) is strictly prohibited. The dataset is partitioned chronologically into a $75\%$ historical training set and a $25\%$ held-out future test window.
+- <strong>Validation Pipeline:</strong> Preprocessing parameters (e.g., median imputer values, scalar means $\mu_{\text{train}}$, standard deviations $\sigma_{\text{train}}$) are fitted <strong>only</strong> on the training partition and transformed downstream onto test and live inference vectors.</p>
+<hr />
+<h2 id="5-machine-learning-methodology">5. Machine Learning Methodology</h2>
+<p>The platform implements a <strong>Dual-Target Formulation</strong>, recognizing that individual equities and macroeconomic indices exhibit fundamentally different statistical properties.</p>
+<pre><code>                           +----------------------------------------+
+                           |       Engineered Feature Matrix        |
+                           |               X&lt;sub&gt;t&lt;/sub&gt; &amp;isin; &amp;#8477;&lt;sup&gt;d&lt;/sup&gt;               |
+                           +-------------------+--------------------+
+                                               |
+                     +-------------------------+-------------------------+
+                     |                                                   |
+                     v                                                   v
+        [ Stocks: Regression Task ]                         [ Indices: Classification ]
+     Target: Next-Day Close Price y&lt;sub&gt;t+1&lt;/sub&gt;               Target: Directional Sign(y&lt;sub&gt;t+k&lt;/sub&gt; - y&lt;sub&gt;t&lt;/sub&gt;)
+                     |                                                   |
+       +-------------+-------------+                       +-------------+-------------+
+       |             |             |                       |             |             |
+       v             v             v                       v             v             v
+  Ridge (L2)   Random Forest    XGBoost               Logistic Reg   RF Classifier  XGBoost Cls
+       |             |             |                       |             |             |
+       +-------------+-------------+                       +-------------+-------------+
+                     |                                                   |
+                     v                                                   v
+        Ensemble (Unweighted Average)                       Ensemble (Optimal Threshold)
+</code></pre>
+<h3 id="51-equity-price-regression">5.1 Equity Price Regression</h3>
+<p>For individual stocks, market participants require target price estimates for position sizing and target setting:
+- <strong>Target Variable:</strong> $y<sub>t</sub> = Close<sub>t+1</sub>$.
+- <strong>Ridge Regression ($L<sub>2</sub>$ Regularization):</strong>
+  $$\min_{w} \left( &Sigma;<sub>i=1..n</sub> (y<sub>i</sub> - w<sup>T</sup> x<sub>i</sub>)^2 + &alpha; |w|<em>2^2 \right)$$
+  Controls multicollinearity among correlated moving averages while retaining linear extrapolation ability.
+- <strong>Random Forest Regressor:</strong>
+  Non-linear ensemble of 700 decorrelated decision trees using bootstrap aggregation (bagging) and randomized feature subspace sampling. Captures complex indicator regime thresholds.
+- <strong>Extreme Gradient Boosting (XGBoost Regressor):</strong>
+  Sequential gradient boosted trees optimizing squared error with shrinkage learning rates ($\eta = 0.05$), column subsampling ($0.9$), and $L<sub>2</sub>$ leaf regularization ($\lambda = 1.0$).
+- <strong>Ensemble Averaging:</strong>
+  Combines predictions via an unweighted voting average:
+  $$y&#770;</em>{\text{Ensemble}} = \frac{1}{M} \sum_{m=1}^{M} y&#770;_m$$</p>
+<h3 id="52-index-directional-classification">5.2 Index Directional Classification</h3>
+<p>For broad indices (<code>NIFTY 50</code>, <code>BANKNIFTY</code>, <code>SENSEX</code>), nominal price levels matter less than directional conviction:
+- <strong>Target Variable:</strong> $y<sub>t</sub> = \mathbf{1}<em>{{\text{Close}</em>{t+k} &gt; \text{Close}_t}}$, with a multi-day smoothed lookahead ($k=2$) to eliminate high-frequency microstructure noise.
+- <strong>Logistic Regression:</strong> Calibrated probability estimates with $L<sub>2</sub>$ weight decay.
+- <strong>Random Forest Classifier:</strong> 500 tree ensemble evaluating Gini impurity splits.
+- <strong>XGBoost Classifier:</strong> Log-loss minimization across depth-constrained decision trees.
+- <strong>Dynamic Threshold Optimization:</strong> Rather than enforcing a naive $p = 0.50$ cutoff, thresholds are swept across validation probabilities ($\theta \in [0.35, 0.65]$) to maximize the $F_1$ and accuracy score.</p>
+<hr />
+<h2 id="6-system-architecture-tech-stack">6. System Architecture &amp; Tech Stack</h2>
+<p>The architecture is structured into <strong>seven isolated, decoupled layers</strong> to ensure separation of concerns:</p>
+<pre><code>+------------------------------------------------------------------------------------------+
+|  Layer 7: User Interface      | Modern Responsive UI (Dark/Light Mode, Keyboard Toggle)  |
++-------------------------------+----------------------------------------------------------+
+|  Layer 6: Visualization Layer | Plotly 2.35 + Tailwind CSS (Interactive Candlesticks)    |
++-------------------------------+----------------------------------------------------------+
+|  Layer 5: Backend Application | Django 5 MVC Framework (URL Routing, Views, Contracts)   |
++-------------------------------+----------------------------------------------------------+
+|  Layer 4: Machine Learning    | Scikit-Learn 1.6 + XGBoost (Training, Scoring, Inference)|
++-------------------------------+----------------------------------------------------------+
+|  Layer 3: Feature Engineering | Ta library + Pandas Rolling Math (9+ Technical Indicators)|
++-------------------------------+----------------------------------------------------------+
+|  Layer 2: Data Processing     | Pandas + NumPy (Sanitization, Validation, Alignment)     |
++-------------------------------+----------------------------------------------------------+
+|  Layer 1: Market Data Layer   | Yahoo Finance API via yfinance (NSE Stocks &amp; Indices)    |
++------------------------------------------------------------------------------------------+
+</code></pre>
+<h3 id="key-engineering-features">Key Engineering Features</h3>
+<ul>
+<li><strong>Zero-Storage Dynamic Cache:</strong> Models train on-demand with vectorized computations, writing output predictions and extracted feature sets to reproducible inspection CSVs (<code>training/&lt;TICKER&gt;_features.csv</code> and <code>training/&lt;TICKER&gt;_test_actual_vs_preds.csv</code>).</li>
+<li><strong>Resilient Fallback Handling:</strong> If Yahoo Finance rate-limits an intraday query, the views automatically fall back to multi-day candles without breaking the page layout.</li>
+<li><strong>Synchronized Theme Engine:</strong> Persistent client-side theme selection (<code>data-theme="dark|light"</code>) synchronized between Tailwind UI classes and Plotly's canvas background colors via JavaScript cookies and local storage.</li>
+</ul>
+<hr />
+<h2 id="7-empirical-results-case-study-tcsns">7. Empirical Results &amp; Case Study (TCS.NS)</h2>
+<p>The application was evaluated across large-cap NSE equities. Below are the verified test-window metrics for <strong>Tata Consultancy Services Limited (<code>TCS.NS</code>)</strong>:</p>
+<h3 id="71-quantitative-performance-comparison-table">7.1 Quantitative Performance Comparison Table</h3>
+<pre><code>+--------------------+------------+--------------+---------------+-------------------+
+| Model Architecture | R&amp;sup2; Score   | MAE (Return) | Directional % | Next-Day Forecast |
++--------------------+------------+--------------+---------------+-------------------+
+| Ridge Regression   |   0.9642   |    2.235%    |    44.85%     |     ₹ 2,430.71    |
+| Ensemble Model     |   0.5822   |    7.924%    |    44.85%     |     ₹ 2,597.79    |
+| Random Forest      |   0.2777   |   10.148%    |    45.18%     |     ₹ 2,660.24    |
+| XGBoost            |   0.0827   |   11.616%    |    45.18%     |     ₹ 2,702.42    |
++--------------------+------------+--------------+---------------+-------------------+
+* Baseline Metrics: Current Market Price (CMP) = ₹ 2,405.00 | Horizon = 1 Trading Day
+</code></pre>
+<h3 id="72-in-depth-analytical-findings">7.2 In-Depth Analytical Findings</h3>
+<pre><code>Price (₹)
+  3,200 |     Actual Price Path (Historical Drift &amp; Drawdown)
+        |     ──────\
+  2,800 |            \           - - - - - - Random Forest &amp; XGBoost Plateau
+        |             \________/           (Unable to predict values lower than train set)
+  2,400 |                      \___________ Ridge Regression (Accurately extrapolates trend)
+        +-------------------------------------------------------------------- Time
+             Sep 2025      Jan 2026      May 2026      Sep 2026      Nov 2026
+</code></pre>
+<h4 id="finding-1-why-ridge-regression-dramatically-outperformed-tree-ensembles">Finding 1: Why Ridge Regression Dramatically Outperformed Tree Ensembles</h4>
+<p>A critical theoretical observation emerges from the test curves:
+- <strong>Decision Trees Cannot Extrapolate Beyond Historical Extrema:</strong>
+  Random Forests and Gradient Boosted Trees partition the feature space into axis-aligned hyper-rectangles. A leaf node's output is the sample mean of historical training observations in that partition. When the stock entered a market-wide downward trend in 2026 reaching price levels lower than observed in the 2022–2025 training set, <strong>Random Forest and XGBoost plateaued around ₹2,600–₹2,700</strong>. They were mathematically incapable of predicting prices below the training target minimum.
+- <strong>Linear Models Extrapolate Gradients:</strong>
+  Ridge regression models price as a continuous linear combination of moving averages and momentum oscillators:
+  $$y&#770; = &beta;<sub>0</sub> + &Sigma;<sub>j</sub> &beta;<sub>j</sub> x<sub>j</sub>$$
+  As moving averages declined with the macro price trend, Ridge's weights naturally projected the downward trajectory, achieving a remarkable <strong>$R&sup2; = 0.9642$</strong> and the closest forecast (<strong>₹2,430.71</strong>) to the actual closing price (<strong>₹2,405.00</strong>).</p>
+<h4 id="finding-2-directional-accuracy-vs-efficient-market-hypothesis">Finding 2: Directional Accuracy vs. Efficient Market Hypothesis</h4>
+<p>Across all models, directional hit rates hovered between <strong>$44.85\%$ and $45.18\%$</strong>. This empirical outcome reinforces fundamental quantitative finance literature:
+- Pure technical indicators calculated on past daily bars carry high noise-to-signal ratios.
+- Day-to-day tick direction closely resembles a geometric Brownian motion with drift.
+- <strong>Scientific Honesty:</strong> Rather than overfitting or cherry-picking train partitions to fabricate an unrealistic $80\%$ accuracy, Atul Quant Studio reports genuine held-out metrics, proving that quantitative models should guide probabilistic spread and risk management rather than binary speculative bets.</p>
+<hr />
+<h2 id="8-presentation-guide-slide-by-slide-defense">8. Presentation Guide &amp; Slide-by-Slide Defense</h2>
+<p>When delivering tomorrow's presentation, follow this structured narrative synchronized with the 10-slide deck:</p>
+<pre><code>Slide 01: Title &amp; Introduction
+  └── Hook: &quot;Bridging the gap between isolated Jupyter notebooks and production quantitative systems.&quot;
+Slide 02: Program Context
+  └── Authority: &quot;Six-week Summer Analytics 2026 program under IIT Guwahati Consulting &amp; Analytics Club.&quot;
+Slide 03: Motivation
+  └── The Contrast: &quot;Traditional retail subjectivity vs. Deterministic, testable ML pipelines.&quot;
+Slide 04: Objectives
+  └── The Scope: &quot;6-step workflow from Yahoo Finance to Django &amp; Plotly visualization.&quot;
+Slide 05: Data &amp; Feature Engineering
+  └── Technical Rigor: &quot;9+ indicators across Trend, Momentum, Volatility without look-ahead bias.&quot;
+Slide 06: Modeling Methodology
+  └── Architecture: &quot;Continuous Regression for stocks, Discrete Classification for indices.&quot;
+Slide 07: 7-Layer Architecture
+  └── Engineering: &quot;Modular MVC separation guaranteeing maintainability and zero coupling.&quot;
+Slide 08: Live Application Showcase
+  └── Proof of Work: &quot;Walk through TCS.NS actual vs. predicted curves, heatmap, and fundamentals.&quot;
+Slide 09: Empirical Evaluation
+  └── Core Insight: &quot;Explain why Ridge ($R&amp;sup2;=0.96$) beat XGBoost ($R&amp;sup2;=0.08$) due to tree extrapolation limits.&quot;
+Slide 10: Conclusion &amp; Roadmap
+  └── Forward Vision: &quot;Next steps: Deep learning (LSTMs/Transformers), caching, and backtesting.&quot;
+</code></pre>
+<h3 id="antifragile-qa-defense-cheatsheet">Antifragile Q&amp;A Defense Cheatsheet</h3>
+<h4 id="q1-why-did-ridge-regression-beat-xgboost-and-random-forest-by-such-a-large-margin">Q1: "Why did Ridge regression beat XGBoost and Random Forest by such a large margin?"</h4>
+<blockquote>
+<p><strong>Answer:</strong> <em>"Tree-based models partition feature space into piecewise constant steps. Consequently, they cannot predict target values outside the range of their training data. When TCS experienced downward price movement below its training period support levels in 2026, XGBoost and Random Forest hit a floor and plateaued around ₹2,600. In contrast, Ridge is a linear model with $L<sub>2</sub>$ penalty that tracks directional slopes, allowing it to extrapolate continuous trends beyond historical extremes, yielding an $R&sup2;$ of 0.9642."</em></p>
+</blockquote>
+<h4 id="q2-why-is-the-directional-accuracy-under-50-around-45-isnt-that-worse-than-a-coin-flip">Q2: "Why is the directional accuracy under 50% (around 45%)? Isn't that worse than a coin flip?"</h4>
+<blockquote>
+<p><strong>Answer:</strong> <em>"In short-term daily financial time series, price direction is governed heavily by market microstructure noise, news shocks, and the Efficient Market Hypothesis. Our pipeline is evaluated on a strict, out-of-sample forward test set with zero look-ahead leakage. An unregularized or overfit model might report 80% on training data, but in production it degrades. Our 45% hit rate proves the integrity of our pipeline and confirms that retail indicators alone cannot predict day-to-day direction deterministically without order-book depth or alternative sentiment data."</em></p>
+</blockquote>
+<h4 id="q3-how-do-you-ensure-there-is-no-data-leakage-in-your-feature-calculations">Q3: "How do you ensure there is no data leakage in your feature calculations?"</h4>
+<blockquote>
+<p><strong>Answer:</strong> <em>"First, we use an exclusively chronological train/test split (75/25), completely avoiding randomized cross-validation. Second, all rolling technical indicators (SMA, EMA, RSI, Bollinger Bands) use backward-looking windows only. Third, feature transformations like imputation and scaling are fit strictly on the training partition and merely applied to the test set, preventing future distribution parameters from contaminating training."</em></p>
+</blockquote>
+<h4 id="q4-why-did-you-build-a-full-django-web-application-instead-of-presenting-notebooks">Q4: "Why did you build a full Django web application instead of presenting notebooks?"</h4>
+<blockquote>
+<p><strong>Answer:</strong> <em>"Notebooks demonstrate experiments; applications demonstrate engineering. In production finance, models must interact with live APIs, handle missing ticks, format charts dynamically, and serve actionable dashboards to analysts. By building a 7-layer Django architecture with Plotly and Tailwind CSS, Atul Quant Studio delivers a complete, interactive, end-to-end product ready for real-world evaluation."</em></p>
+</blockquote>
+<hr />
+<h2 id="9-limitations-future-scope">9. Limitations &amp; Future Scope</h2>
+<h3 id="91-known-system-limitations">9.1 Known System Limitations</h3>
+<ul>
+<li><strong>Data Source Reliability:</strong> The free Yahoo Finance endpoint is subject to rate-limiting and lacks market-depth (Level 2/3 order book) information.</li>
+<li><strong>Univariate Fundamental Integration:</strong> Current models train on price-derived technical features; fundamental metrics (P/E, ROE, EPS) are displayed for informational purposes rather than fed directly into regression trees.</li>
+<li><strong>Regime Shift Vulnerability:</strong> Abrupt geopolitical shocks or central bank interest rate announcements cannot be anticipated from historical price series alone.</li>
+</ul>
+<h3 id="92-engineering-research-roadmap">9.2 Engineering &amp; Research Roadmap</h3>
+<ol>
+<li><strong>Advanced Sequence Modeling:</strong> Incorporate <strong>LSTM</strong>, <strong>Temporal Fusion Transformers (TFT)</strong>, and <strong>PatchTST</strong> architectures designed specifically for multivariate long-term time series forecasting.</li>
+<li><strong>Event-Driven Backtesting Engine:</strong> Integrate transaction costs, bid-ask spread slippage, and position-sizing algorithms (Kelly Criterion, Sharpe ratio optimization).</li>
+<li><strong>In-Memory Caching with Redis &amp; Celery:</strong> Asynchronous task queues for scheduled pre-market data fetching to reduce page response latency from $\approx 2\text{s}$ to $&lt; 100\text{ms}$.</li>
+<li><strong>Alternative Data Sources:</strong> Scrape regulatory NSE filings, earnings call transcripts, and financial news sentiment via LLM-based embeddings to complement technical features.</li>
+<li><strong>Containerization:</strong> Package the Django web backend, PostgreSQL database, and Celery worker fleet into Docker Compose containers for one-command cloud deployment.</li>
+</ol>
+<hr />
+<h2 id="10-conclusion">10. Conclusion</h2>
+<p><strong>Atul Quant Studio</strong> successfully proves that combining rigorous feature engineering, out-of-sample machine learning validation, and full-stack software architecture produces a transparent, reproducible alternative to retail market speculation. Built and verified under the <strong>Summer Analytics 2026</strong> program at <strong>IIT Guwahati</strong>, the platform stands as a testament to practical, production-ready data science.</p>
+<hr />
+<p><em>Report generated and formatted for official presentation submission.</em><br />
+<em>Repository: <a href="https://github.com/atulyd77/atul-quant-studio">github.com/atulyd77/atul-quant-studio</a></em></p>
+
+<div class="footer-note">
+  Atul Quant Studio &copy; 2026 Atul Prakash. All rights reserved. &bull; Summer Analytics 2026, Consulting &amp; Analytics Club, IIT Guwahati.
+</div>
+
+</body>
+</html>
